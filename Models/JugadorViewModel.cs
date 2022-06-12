@@ -1,10 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace WebApiFutbolistas.Entities
+namespace WebApiFutbolistas.Models
 {
-    public class Jugador
+    public class JugadorViewModel
     {
-        public int Id { get; set; }
         [Required]
         public string Nombre { get; set; }
         [Required]
@@ -17,9 +16,5 @@ namespace WebApiFutbolistas.Entities
         public int PosicionId { get; set; }
         [Required]
         public int ContinenteId { get; set; }
-
-        public Continente Continente { get; set; }
-        public Posicion Posicion { get; set; }
-
     }
 }
