@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using WebApiFutbolistas.Context;
 
 namespace WebApiFutbolistas.Controllers
 {
@@ -7,5 +8,11 @@ namespace WebApiFutbolistas.Controllers
     [ApiController]
     public class JugadorController : ControllerBase
     {
+        private readonly AppDbContext context;
+
+        public JugadorController(AppDbContext context)
+        {
+            this.context = context;
+        }
     }
 }
