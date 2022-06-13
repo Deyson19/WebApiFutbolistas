@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebApiFutbolistas.Context;
 using WebApiFutbolistas.Entities;
+using WebApiFutbolistas.Models;
 
 namespace WebApiFutbolistas.Controllers
 {
@@ -18,67 +19,87 @@ namespace WebApiFutbolistas.Controllers
         }
 
         [HttpGet]
-        public ActionResult<IEnumerable<Continente>> Get()
+        public async Task<ActionResult> Get()
         {
-            return dbContext.Continentes.Include(cont => cont.Jugadores).ToList();
+
+            var traerDatos = await dbContext.Continentes.Select(n => new
+            {
+                Id = n.Id,
+                Nombre = n.Nombre
+            }).ToListAsync();
+
+            return Ok(traerDatos);
         }
 
         //Este metodo es para buscar un resultado en la DB mediante un campo para ID
         [HttpGet("{id}",Name ="ObtenerContinente")]
-        public ActionResult<Continente> Get(int id)
+        public async Task<ActionResult> Get(int id)
         {
-            var continente = dbContext.Continentes.Include(con => con.Jugadores).FirstOrDefault(c => c.Id == id);
+            var continente = await dbContext.Continentes.Select(m=> new
+            {
+                Id = m.Id,
+                Nombre = m.Nombre
+            }).FirstOrDefaultAsync(c => c.Id == id);
 
             if (continente ==null)
             {
                 return BadRequest();
             }
-            return continente;
+            return Ok(continente);
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] Continente continente)
+        public async Task<ActionResult> Post([FromBody] ContinenteViewModel continente)
         {
-            dbContext.Continentes.Add(continente);
-            dbContext.SaveChanges();
+            Continente c = new()
+            {
+                Nombre = continente.Nombre
+            };
+            dbContext.Continentes.Add(c);
+            await dbContext.SaveChangesAsync();
+
+            return Ok("Se ha ingresado un nuevo continente");
             return new CreatedAtRouteResult("ObtenerContinente", new { id = continente.Id },continente);
         }
 
         [HttpPut("{id}")]
 
-        public ActionResult Put(int id, [FromBody] Continente co)
+        public async Task<ActionResult> Put(int id, [FromBody] Continente co)
         {
-            if (id != co.Id)
+            var dato = await dbContext.Continentes.FirstOrDefaultAsync(i => i.Id == id);
+
+            if (dato is not null)
             {
+                if (id == dato.Id)
+                {
+                    dato.Nombre = co.Nombre;
+
+                    dbContext.Continentes.Update(dato);
+                    await dbContext.SaveChangesAsync();
+
+                    return Ok($"Se ha actualizado el registro con nombre: {dato.Nombre}");
+                }
+
                 return BadRequest();
             }
 
-            try
-            {
-                dbContext.Entry(co).State = EntityState.Modified;
-                dbContext.SaveChanges();
-                return Ok();
-            }
-            catch (Exception)
-            {
-                
-                throw;
-            }
+            return NotFound();
+            
         }
 
         [HttpDelete("{id}")]
-        public ActionResult<Continente> Delete(int id)
+        public async Task<ActionResult<object>> Delete(int id)
         {
-            var deleteContinente = dbContext.Continentes.FirstOrDefault(c => c.Id == id);
+            var deleteContinente = await dbContext.Continentes.FirstOrDefaultAsync(c => c.Id == id);
             if (deleteContinente == null)
             {
                 return NotFound();
             }
 
             dbContext.Continentes.Remove(deleteContinente);
-            dbContext.SaveChanges();
+            await dbContext.SaveChangesAsync();
 
-            return deleteContinente;
+            return Ok("Se ha eliminado el continente: "+deleteContinente.Nombre +" ya no esta disponible.");
         }
 
 
