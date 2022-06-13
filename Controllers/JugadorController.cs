@@ -25,6 +25,7 @@ namespace WebApiFutbolistas.Controllers
                 Include(c => c.Continente).Select(m => new
                 {
                     //traer objeto de bd con los campos especificos
+                    Id = m.Id,
                     Nombre = m.Nombre,
                     Apellido = m.Apellido,
                     Dorsal = m.Dorsal,
@@ -53,7 +54,9 @@ namespace WebApiFutbolistas.Controllers
                     Edad = l.Edad,
                     Dorsal = l.Dorsal,
                     Posicion = l.Posicion.Nombre,
-                    Continente = l.Continente.Nombre
+                    PosicionId = l.PosicionId,
+                    Continente = l.Continente.Nombre,
+                    ContinenteId = l.Continente.Id
                 })
                 .FirstOrDefaultAsync(i => i.Id == id);
 
@@ -82,6 +85,51 @@ namespace WebApiFutbolistas.Controllers
             await context.SaveChangesAsync();
 
             return new CreatedAtRouteResult("ObtenerJugador", new { id = j.Id }, j);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult> Put(int id, [FromBody] Jugador jugador)
+        {   
+            var dato = await context.Jugadores.FirstOrDefaultAsync(i => i.Id == id);
+
+            if (dato is not null)
+            {
+                if (id == dato.Id)
+                {
+                    dato.Nombre = jugador.Nombre;
+                    dato.Apellido = jugador.Apellido;
+                    dato.Edad = jugador.Edad;
+                    dato.Dorsal = jugador.Dorsal;
+                    dato.PosicionId = jugador.PosicionId;
+                    dato.ContinenteId = jugador.ContinenteId;
+                    
+                    context.Jugadores.Update(dato);
+                    await context.SaveChangesAsync();
+
+                    return Ok($"Se han actualizado el registro con nombre: {dato.Nombre}");
+                }
+                return BadRequest();
+            }
+
+            return NotFound();
+
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<object>> Delete(int id)
+        {
+            var juElimiar = await context.Jugadores.FirstOrDefaultAsync(j => j.Id == id);
+
+            if(juElimiar is null)
+            {
+                return NotFound();
+            }
+
+            context.Jugadores.Remove(juElimiar);
+            await context.SaveChangesAsync();
+
+            return Ok("Se ha eliminado un jugador");
+
         }
 
     }
