@@ -1,0 +1,11 @@
+﻿SET IDENTITY_INSERT [dbo].[Posiciones] ON
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (2, N'Arquero')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (3, N'Lateral D')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (4, N'Lateral I')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (5, N'Central')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (6, N'Volante')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (7, N'Volante Ofensivo')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (8, N'Extremo D')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (9, N'Extremo I')
+INSERT INTO [dbo].[Posiciones] ([Id], [Nombre]) VALUES (10, N'Delantero')
+SET IDENTITY_INSERT [dbo].[Posiciones] OFF

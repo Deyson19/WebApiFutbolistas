@@ -1,0 +1,8 @@
+﻿SET IDENTITY_INSERT [dbo].[Jugadores] ON
+INSERT INTO [dbo].[Jugadores] ([Id], [Nombre], [Apellido], [Dorsal], [Edad], [PosicionId], [ContinenteId]) VALUES (1, N'Ricardo', N'Kaká', 22, 25, 7, 7)
+INSERT INTO [dbo].[Jugadores] ([Id], [Nombre], [Apellido], [Dorsal], [Edad], [PosicionId], [ContinenteId]) VALUES (2, N'Zinedine', N'Zidane', 5, 36, 6, 4)
+INSERT INTO [dbo].[Jugadores] ([Id], [Nombre], [Apellido], [Dorsal], [Edad], [PosicionId], [ContinenteId]) VALUES (3, N'Alfredo', N'Talavera', 1, 33, 2, 5)
+INSERT INTO [dbo].[Jugadores] ([Id], [Nombre], [Apellido], [Dorsal], [Edad], [PosicionId], [ContinenteId]) VALUES (4, N'Camilo Andres', N'Vargas', 12, 34, 2, 7)
+INSERT INTO [dbo].[Jugadores] ([Id], [Nombre], [Apellido], [Dorsal], [Edad], [PosicionId], [ContinenteId]) VALUES (5, N'Carlos', N'Henrique', 14, 29, 5, 4)
+INSERT INTO [dbo].[Jugadores] ([Id], [Nombre], [Apellido], [Dorsal], [Edad], [PosicionId], [ContinenteId]) VALUES (6, N'Take', N'Kubo', 10, 19, 8, 2)
+SET IDENTITY_INSERT [dbo].[Jugadores] OFF

@@ -1,0 +1,9 @@
+﻿SET IDENTITY_INSERT [dbo].[Continentes] ON
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (1, N'Africa')
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (2, N'Asia')
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (3, N'Oceania')
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (4, N'Europa')
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (5, N'Centro América')
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (6, N'Norte América')
+INSERT INTO [dbo].[Continentes] ([Id], [Nombre]) VALUES (7, N'Sur América')
+SET IDENTITY_INSERT [dbo].[Continentes] OFF

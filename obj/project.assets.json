@@ -2057,19 +2057,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Developer\\.nuget\\packages\\": {}
+    "C:\\Users\\Deyson Vente\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\ConstruyendoWebAPIs\\WebApiLibros\\WebApiFutbolistas\\WebApiFutbolistas.csproj",
+      "projectUniqueName": "D:\\Proyectos\\Projects\\ConstruyendoWebAPIs\\WebApiLibros\\WebApiFutbolistas\\WebApiFutbolistas.csproj",
       "projectName": "WebApiFutbolistas",
-      "projectPath": "D:\\Projects\\ConstruyendoWebAPIs\\WebApiLibros\\WebApiFutbolistas\\WebApiFutbolistas.csproj",
-      "packagesPath": "C:\\Users\\Developer\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\ConstruyendoWebAPIs\\WebApiLibros\\WebApiFutbolistas\\obj\\",
+      "projectPath": "D:\\Proyectos\\Projects\\ConstruyendoWebAPIs\\WebApiLibros\\WebApiFutbolistas\\WebApiFutbolistas.csproj",
+      "packagesPath": "C:\\Users\\Deyson Vente\\.nuget\\packages\\",
+      "outputPath": "D:\\Proyectos\\Projects\\ConstruyendoWebAPIs\\WebApiLibros\\WebApiFutbolistas\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Developer\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Deyson Vente\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -2132,7 +2132,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
